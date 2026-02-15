@@ -39,11 +39,20 @@ for root, dirs, files in os.walk(home):
                 continue
 
             # 调用脚本中的 decrypt 方法解密文件
-            data = script.exports_sync.decrypt(os.path.join(root, file))
-            
-            # 写入解密后的数据到输出文件
-            with open(output_file_path, "wb") as f:
-                f.write(data)
+            try:
+                data = script.exports_sync.decrypt(os.path.join(root, file))
+                
+                if data is None or len(data) == 0:
+                    print(f"Error: Failed to decrypt {file} - no data returned")
+                    continue
+                
+                # 写入解密后的数据到输出文件
+                with open(output_file_path, "wb") as f:
+                    f.write(data)
+                print(f"Successfully decrypted to {output_file_path}")
+            except Exception as e:
+                print(f"Error decrypting {file}: {str(e)}")
+                continue
 
 # 分离会话
 session.detach()
