@@ -29,35 +29,35 @@ var EncAndDesMediaFileConstructor = new NativeFunction(
   EncAndDesMediaFileConstructorAddr,
   "pointer",
   ["pointer"],
-  "thiscall"
+  { abi: "thiscall" }
 );
 
 var EncAndDesMediaFileDestructor = new NativeFunction(
   EncAndDesMediaFileDestructorAddr,
   "void",
   ["pointer"],
-  "thiscall"
+  { abi: "thiscall" }
 );
 
 var EncAndDesMediaFileOpen = new NativeFunction(
   EncAndDesMediaFileOpenAddr,
   "bool",
   ["pointer", "pointer", "bool", "bool"],
-  "thiscall"
+  { abi: "thiscall" }
 );
 
 var EncAndDesMediaFileGetSize = new NativeFunction(
   EncAndDesMediaFileGetSizeAddr,
   "uint32",
   ["pointer"],
-  "thiscall"
+  { abi: "thiscall" }
 );
 
 var EncAndDesMediaFileRead = new NativeFunction(
   EncAndDesMediaFileReadAddr,
   "uint",
   ["pointer", "pointer", "uint32", "uint64"],
-  "thiscall"
+  { abi: "thiscall" }
 );
 
 rpc.exports = {
