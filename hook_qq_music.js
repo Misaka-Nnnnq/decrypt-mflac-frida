@@ -61,7 +61,7 @@ var EncAndDesMediaFileRead = new NativeFunction(
 );
 
 rpc.exports = {
-  decrypt: function (srcFileName, tmpFileName) {
+  decrypt: function (srcFileName) {
     var EncAndDesMediaFileObject = Memory.alloc(0x28);
     EncAndDesMediaFileConstructor(EncAndDesMediaFileObject);
 
@@ -76,7 +76,6 @@ rpc.exports = {
     var data = buffer.readByteArray(fileSize);
     EncAndDesMediaFileDestructor(EncAndDesMediaFileObject);
     
-    var tmpFile = new File(tmpFileName, "wb");
-    tmpFile.write(data);
+    return data;
   },
 };
